@@ -67,28 +67,7 @@ module.exports = function (config) {
       /***common的源码***/
       '../src/common/**/*.js',
       /**测试文件**/
-      './test-main-common.js',
-
-      /***leaflet的源码***/
-      { pattern: './libs/workers/TurfWorkerForTest.js', include: false },
-      { pattern: '../node_modules/leaflet/dist/leaflet.css', include: false },
-      { pattern: '../src/leaflet/**/**/*.css', include: false },
-      '../src/leaflet/**/!(index).js',
-      /**测试文件**/
-      './test-main-leaflet.js',
-
-      /***openlayers的源码***/
-      { pattern: '../node_modules/ol/ol.css', include: false },
-      { pattern: '../src/openlayers/**/**/*.css', include: false },
-      '../src/openlayers/**/!(index).js',
-      /**测试文件**/
-      './test-main-openlayers.js',
-
-      /***mapboxgl***/
-      { pattern: '../node_modules/mapbox-gl/dist/mapbox-gl.css', include: false },
-      '../src/mapboxgl/**/!(index).js',
-      /**测试文件**/
-      './test-main-mapboxgl.js'
+      './test-main-common.js'
     ],
 
     // list of files to exclude 测试时排除的文件
@@ -168,7 +147,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadless'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
