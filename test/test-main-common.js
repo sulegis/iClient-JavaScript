@@ -90,7 +90,7 @@ import './common/iServer/DatasourceServiceSpec.js';
 // import './common/iServer/FacilityAnalystTraceup3DServiceSpec.js';
 // import './common/iServer/FacilityAnalystUpstream3DServiceSpec.js';
 import './common/iServer/ImageServiceSpec';
-import './common/iServer/imageCollectionServiceSpec';
+import './common/iServer/ImageCollectionServiceSpec';
 import './common/iServer/FieldsFilterSpec';
 import './common/iServer/ImageGFAspectSpec';
 import './common/iServer/ImageGFHillShadeSpec';
