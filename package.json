@@ -36,6 +36,7 @@
     "package-debug": "node ./build/pack.js - debug",
     "test": "npm install ./src/common && karma start ./test/karma.conf.js",
     "citest": "npm install ./src/common && karma start ./test/karma.conf.js --single-run --no-auto-watch",
+    "citest1": "npm install ./src/common && karma start ./test/karma.conf.js --single-run --no-auto-watch --server http://support.supermap.com.cn:8090/iserver", 
     "exampletest": "nightwatch --config ./examples-test/nightwatch.json",
     "build-docs": "npm run build-docs-leaflet&&npm run build-docs-openlayers&&npm run build-docs-mapboxgl&&npm run build-docs-classic",
     "build-docs-leaflet": "jsdoc -c ./build/jsdocs/leaflet/docs.json -R ./build/jsdocs/leaflet/index.md",
