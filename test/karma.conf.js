@@ -8,6 +8,9 @@ const filesForDescriptions = fileUtil.getFilesForDescriptions(testPath, testFile
 
 program.option('--single-run').option('--no-auto-watch').option('--server <server>');
 const testServer = program.parse(process.argv).opts().server || 'http://localhost:8090/iserver';
+
+process.env.CHROME_BIN = require('puppeteer').executablePath()
+
 console.log('testServer',testServer);
 module.exports = function (config) {
   // 设置测试的超时时间
