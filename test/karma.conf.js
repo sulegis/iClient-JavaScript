@@ -64,13 +64,13 @@ module.exports = function (config) {
       { pattern: '../src/classic/libs/SuperMap_Basic-8.1.1-17729.js', include: false },
       { pattern: '../src/classic/libs/Lang/*.js', include: false },
       { pattern: '../src/classic/theme/default/*.css', include: false },
-      /**测试文件**/
-      './test-main-classic.js',
+      /**测试文件
+      './test-main-classic.js',**/
 
       /***common的源码***/
       '../src/common/**/*.js',
-      /**测试文件**/
-      './test-main-common.js',
+      /**测试文件
+      './test-main-common.js',**/
 
       /***leaflet的源码***/
       { pattern: './libs/workers/TurfWorkerForTest.js', include: false },
