@@ -6,8 +6,6 @@ const testPath = ['./test'];
 const testFilePattern = 'Spec.js';
 const filesForDescriptions = fileUtil.getFilesForDescriptions(testPath, testFilePattern);
 
-process.env.CHROME_BIN = require('puppeteer').executablePath()
-
 program.option('--single-run').option('--no-auto-watch').option('--server <server>');
 const testServer = program.parse(process.argv).opts().server || 'http://localhost:8090/iserver';
 console.log('testServer',testServer);
@@ -64,12 +62,12 @@ module.exports = function (config) {
       { pattern: '../src/classic/libs/Lang/*.js', include: false },
       { pattern: '../src/classic/theme/default/*.css', include: false },
       /**测试文件**/
-      //'./test-main-classic.js',
+      './test-main-classic.js',
 
       /***common的源码***/
       '../src/common/**/*.js',
       /**测试文件**/
-      // './test-main-common-mini.js',
+      './test-main-common.js',
 
       /***leaflet的源码***/
       { pattern: './libs/workers/TurfWorkerForTest.js', include: false },
@@ -77,7 +75,20 @@ module.exports = function (config) {
       { pattern: '../src/leaflet/**/**/*.css', include: false },
       '../src/leaflet/**/!(index).js',
       /**测试文件**/
-      './test-main-leaflet-mini.js'
+      './test-main-leaflet.js',
+
+      /***openlayers的源码***/
+      { pattern: '../node_modules/ol/ol.css', include: false },
+      { pattern: '../src/openlayers/**/**/*.css', include: false },
+      '../src/openlayers/**/!(index).js',
+      /**测试文件**/
+      './test-main-openlayers.js',
+
+      /***mapboxgl***/
+      { pattern: '../node_modules/mapbox-gl/dist/mapbox-gl.css', include: false },
+      '../src/mapboxgl/**/!(index).js',
+      /**测试文件**/
+      './test-main-mapboxgl.js'
     ],
 
     // list of files to exclude 测试时排除的文件
@@ -96,24 +107,22 @@ module.exports = function (config) {
       '../src/common/**/*.js': ['browserify'],
       // './common/**/*Spec.js': ['browserify'],
       './test-main-common.js': ['browserify'],
-      './test-main-common-mini.js': ['browserify'],
 
       '../node_modules/leaflet/dist/leaflet-src.js': ['browserify'],
       '../src/leaflet/**/!(index).js': ['browserify'],
       // './leaflet/**/*Spec.js': ['browserify'],
       './test-main-leaflet.js': ['browserify'],
-      './test-main-leaflet-mini.js': ['browserify'],
 
-      // '../node_modules/ol/*.js': ['browserify'],
-      // '../node_modules/ol/**/*.js': ['browserify'],
-      // '../src/openlayers/**/!(index).js': ['browserify'],
-      // // './openlayers/**/*Spec.js': ['browserify'],
-      // './test-main-openlayers.js': ['browserify'],
+      '../node_modules/ol/*.js': ['browserify'],
+      '../node_modules/ol/**/*.js': ['browserify'],
+      '../src/openlayers/**/!(index).js': ['browserify'],
+      // './openlayers/**/*Spec.js': ['browserify'],
+      './test-main-openlayers.js': ['browserify'],
 
-      // '../node_modules/mapbox-gl/dist/mapbox-gl-dev.js': ['browserify'],
-      // '../src/mapboxgl/**/!(index).js': ['browserify'],
-      // // './mapboxgl/**/*Spec.js': ['browserify'],
-      // './test-main-mapboxgl.js': ['browserify']
+      '../node_modules/mapbox-gl/dist/mapbox-gl-dev.js': ['browserify'],
+      '../src/mapboxgl/**/!(index).js': ['browserify'],
+      // './mapboxgl/**/*Spec.js': ['browserify'],
+      './test-main-mapboxgl.js': ['browserify']
     },
 
     // test results reporter to use
@@ -159,7 +168,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['ChromeHeadless'],
+    browsers: ['Chrome'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
